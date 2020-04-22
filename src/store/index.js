@@ -11,7 +11,7 @@ const store = new Vuex.Store({
     user: '',
   },
   getters: {
-    getUser: (state) => state.user,
+    getUser: state => state.user,
   },
   mutations: {
     settingUser: (state, user) => (state.user = user),
@@ -31,10 +31,13 @@ const store = new Vuex.Store({
         await userRef.set(userObject, { merge: true })
         const userDB = await userRef.get()
         commit('settingUser', { uid: user.uid, ...userDB.data() })
-        await db.collection('cart').doc(user.uid).set({
-          items: [],
-          total: 0,
-        })
+        await db
+          .collection('cart')
+          .doc(user.uid)
+          .set({
+            items: [],
+            total: 0,
+          })
       } else {
         commit('settingUser', '')
       }
