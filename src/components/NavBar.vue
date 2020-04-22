@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar app color="primary" dark>
+  <v-app-bar app color="success" dark>
     <v-toolbar-title class="font-weight-light">
       <v-btn text class="text-none font-weight-light headline" @click="$router.push('/')">
         <span class="font-weight-regular">Shop</span>
